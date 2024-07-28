@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="updateListVm"
+            type="com.example.todolist.ui.viewModel.UpdateListViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".ui.activity.ListActivity">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/datePicker"
+            style="@style/Style_TextView_SemiBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/_5sdp"
+            android:gravity="center_vertical"
+            android:onClick="@{()->updateListVm.onDatePickerBtnClick()}"
+            android:paddingVertical="@dimen/_10sdp"
+            android:text="@string/date"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"
+            app:drawableLeftCompat="@drawable/baseline_edit_calendar_24"
+            app:layout_constraintBottom_toTopOf="@+id/timePicker"
+            app:layout_constraintEnd_toStartOf="@+id/textInputLayout"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/timePicker"
+            style="@style/Style_TextView_SemiBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/_5sdp"
+            android:gravity="center_vertical"
+            android:onClick="@{()->updateListVm.onTimePickerBtnClick()}"
+            android:paddingVertical="@dimen/_10sdp"
+            android:text="@string/time"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"
+            app:drawableLeftCompat="@drawable/baseline_more_time_24"
+            app:layout_constraintBottom_toTopOf="@+id/tvTitle"
+            app:layout_constraintEnd_toStartOf="@+id/textInputLayout"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/datePicker" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout"
+            style="@style/NoBorderBlackBackgroundTextInputLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:endIconDrawable="@drawable/baseline_outlined_flag_24"
+            app:layout_constraintBottom_toBottomOf="@+id/timePicker"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/datePicker">
+
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteTextView"
+                style="@style/Style_TextView_SemiBold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="0dp"
+                android:inputType="none"
+                android:padding="@dimen/_5sdp"
+                android:text="@string/priority"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp"
+                tools:ignore="LabelFor" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/tvTitle"
+            style="@style/Style_TextView_Bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:background="@drawable/edittext_bg"
+            android:hint="@string/title"
+            android:inputType="text"
+            android:paddingVertical="@dimen/_4sdp"
+            android:singleLine="true"
+            android:text="@={updateListVm.titleTxt}"
+            android:textSize="@dimen/_22sdp"
+            app:layout_constraintBottom_toTopOf="@+id/view1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/timePicker"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:background="@color/dashed_line"
+            app:layout_constraintBottom_toTopOf="@+id/tvType"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/tvType"
+            style="@style/Style_TextView_SemiBold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:background="@drawable/edittext_bg"
+            android:hint="@string/type"
+            android:inputType="text"
+            android:paddingVertical="@dimen/_4sdp"
+            android:singleLine="true"
+            android:text="@={updateListVm.typeTxt}"
+            android:textSize="@dimen/_18sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view1" />
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:background="@color/dashed_line"
+            app:layout_constraintBottom_toTopOf="@+id/tvDescription"
+            app:layout_constraintTop_toBottomOf="@+id/tvType"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/tvDescription"
+            style="@style/Style_TextView_Medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:autofillHints=""
+            android:background="@drawable/edittext_bg"
+            android:hint="@string/description"
+            android:inputType="textMultiLine"
+            android:text="@={updateListVm.descriptionTxt}"
+            android:textSize="@dimen/_16sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view2"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnSaveList"
+            style="@style/Widget.App.FloatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_15sdp"
+            android:contentDescription="@null"
+            android:onClick="@{()->updateListVm.onSaveBtnClick()}"
+            android:src="@drawable/baseline_save_as_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvDescription"
+            app:layout_constraintVertical_bias="1.0" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

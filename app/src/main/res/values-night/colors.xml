@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FFFFFFFF</color>
+    <color name="white">#FF000000</color>
+    <color name="sky_blue">#44A0E0</color>
+    <color name="high">#FF5252</color>
+    <color name="low">#69F0AE</color>
+    <color name="medium">#FFAB40</color>
+    <color name="dashed_line">#232325</color>
+    <color name="dark_text_field">#3b3b3b</color>
+
+</resources>

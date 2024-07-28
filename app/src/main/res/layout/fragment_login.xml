@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="loginVm"
+            type="com.example.todolist.ui.viewModel.LoginViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:paddingHorizontal="@dimen/_15sdp">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/userName"
+            style="@style/Style_TextView_Regular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:autofillHints=""
+            android:background="@drawable/edittext_sharper"
+            android:drawableStart="@drawable/outline_email_24"
+            android:drawablePadding="@dimen/_5sdp"
+            android:drawableTint="#A19E9E"
+            android:hint="@string/enter_an_email_address"
+            android:inputType="text"
+            android:paddingHorizontal="@dimen/_8sdp"
+            android:paddingVertical="@dimen/_13sdp"
+            android:text="@={loginVm.userName}"
+            app:layout_constraintBottom_toTopOf="@+id/password"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/password"
+            style="@style/Style_TextView_Regular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:autofillHints=""
+            android:background="@drawable/edittext_sharper"
+            android:drawableStart="@drawable/ic_lock"
+            android:drawablePadding="@dimen/_5sdp"
+            android:hint="@string/enter_an_password"
+            android:inputType="text"
+            android:paddingHorizontal="@dimen/_8sdp"
+            android:paddingVertical="@dimen/_13sdp"
+            android:text="@={loginVm.password}"
+            app:layout_constraintTop_toBottomOf="@+id/userName"
+            tools:ignore="TextFields" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivHide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->loginVm.onVisibilityClick()}"
+            android:paddingEnd="@dimen/_10sdp"
+            android:src="@drawable/baseline_visibility_24"
+            app:layout_constraintBottom_toBottomOf="@+id/password"
+            app:layout_constraintEnd_toEndOf="@+id/password"
+            app:layout_constraintTop_toTopOf="@+id/password"
+            tools:ignore="RtlSymmetry" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvError"
+            style="@style/Style_TextView_Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/_5sdp"
+            android:paddingStart="@dimen/_15sdp"
+            android:textColor="@color/high"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/login"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/password"
+            app:layout_constraintVertical_bias="0.0"
+            tools:ignore="RtlSymmetry" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/login"
+            style="@style/OutlinedYellowButton"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:text="@string/login"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvError" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

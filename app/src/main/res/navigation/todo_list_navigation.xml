@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/todo_list_navigation"
+    app:startDestination="@id/homePageFragment">
+    <fragment
+        android:id="@+id/homePageFragment"
+        android:name="com.example.todolist.ui.fragment.HomePageFragment"
+        android:label="HomePageFragment" >
+        <action
+            android:id="@+id/action_homePageFragment_to_updateListFragment"
+            app:destination="@id/updateListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateListFragment"
+        android:name="com.example.todolist.ui.fragment.UpdateListFragment"
+        android:label="UpdateListFragment" />
+</navigation>

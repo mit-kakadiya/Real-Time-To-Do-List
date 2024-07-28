@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="registrationVm"
+            type="com.example.todolist.ui.viewModel.RegistrationViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:paddingHorizontal="@dimen/_15sdp">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/userName"
+            style="@style/Style_TextView_Regular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:autofillHints=""
+            android:background="@drawable/edittext_sharper"
+            android:drawableStart="@drawable/outline_email_24"
+            android:drawablePadding="@dimen/_5sdp"
+            android:drawableTint="#A19E9E"
+            android:hint="@string/enter_an_email_address"
+            android:inputType="text"
+            android:paddingHorizontal="@dimen/_8sdp"
+            android:paddingVertical="@dimen/_13sdp"
+            android:text="@={registrationVm.userName}"
+            app:layout_constraintBottom_toTopOf="@+id/password"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/password"
+            style="@style/Style_TextView_Regular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:autofillHints=""
+            android:background="@drawable/edittext_sharper"
+            android:drawableStart="@drawable/ic_lock"
+            android:drawablePadding="@dimen/_5sdp"
+            android:hint="@string/enter_an_password"
+            android:inputType="text"
+            android:paddingHorizontal="@dimen/_8sdp"
+            android:paddingVertical="@dimen/_13sdp"
+            android:text="@={registrationVm.password}"
+            app:layout_constraintTop_toBottomOf="@+id/userName"
+            tools:ignore="TextFields" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivHideOne"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->registrationVm.onPasswordVisible()}"
+            android:paddingEnd="@dimen/_10sdp"
+            android:src="@drawable/baseline_visibility_24"
+            app:layout_constraintBottom_toBottomOf="@+id/password"
+            app:layout_constraintEnd_toEndOf="@+id/password"
+            app:layout_constraintTop_toTopOf="@+id/password"
+            tools:ignore="RtlSymmetry" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/confirmPassword"
+            style="@style/Style_TextView_Regular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:autofillHints=""
+            android:background="@drawable/edittext_sharper"
+            android:drawableStart="@drawable/ic_lock"
+            android:drawablePadding="@dimen/_5sdp"
+            android:hint="@string/re_enter_password"
+            android:inputType="text"
+            android:paddingHorizontal="@dimen/_8sdp"
+            android:paddingVertical="@dimen/_13sdp"
+            android:text="@={registrationVm.confirmPassword}"
+            app:layout_constraintTop_toBottomOf="@+id/password"
+            tools:ignore="TextFields" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivHideSecond"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->registrationVm.onCPasswordVisible()}"
+            android:paddingEnd="@dimen/_10sdp"
+            android:src="@drawable/baseline_visibility_24"
+            app:layout_constraintBottom_toBottomOf="@+id/confirmPassword"
+            app:layout_constraintEnd_toEndOf="@+id/confirmPassword"
+            app:layout_constraintTop_toTopOf="@+id/confirmPassword"
+            tools:ignore="RtlSymmetry" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvError"
+            style="@style/Style_TextView_Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/_5sdp"
+            android:paddingStart="@dimen/_15sdp"
+            android:textColor="@color/high"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/tvLogin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/confirmPassword"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:ignore="RtlSymmetry" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvLogin"
+            style="@style/Style_TextView_Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:text="@string/do_you_have_already_an_account"
+            app:layout_constraintBottom_toTopOf="@+id/register"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvError"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/register"
+            style="@style/OutlinedYellowButton"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:text="@string/register"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvLogin"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
